@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import Modal from '../Modal';
 import Cart from '../pages/Cart';
 import { useCart } from './ContextReducer';
-import { Badge } from '@material-ui/core';
 
 export default function Navbar() {
     let data = useCart();
@@ -18,7 +17,7 @@ export default function Navbar() {
     const badgeStyle = {
         backgroundColor: 'red',
         borderRadius: '50%', // This makes it circular
-        padding: '3px 6px', // Adjust the padding to control the size of the circle
+        padding: '0px 6px', // Adjust the padding to control the size of the circle
         lineHeight: '1', // Set the line height to 1 to make it more round
         color: 'white',
         marginLeft: '6px',
@@ -27,10 +26,11 @@ export default function Navbar() {
     const badgeStyle2 = {
         backgroundColor: 'white',
         borderRadius: '50%', // This makes it circular
-        padding: '3px 6px', // Adjust the padding to control the size of the circle
+        padding: '0px 6px', // Adjust the padding to control the size of the circle
         lineHeight: '1', // Set the line height to 1 to make it more round
         color: 'red',
-        bottom: '13px',
+        position:'relative',
+        bottom: '15px',
         right: '7px',
         marginLeft: '6px',
         marginBottom: '2px' // Set the text color to white
@@ -47,7 +47,7 @@ export default function Navbar() {
                         data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent"
                     >
-                        <span className="navbar-toggler-icon">{data.length > 0 ? <Badge pill bg="danger" style={badgeStyle2}>{data.length}</Badge> : ""}</span>
+                        <span className="navbar-toggler-icon">{data.length > 0 ? <span pill bg="danger" style={badgeStyle2}>{data.length}</span> : ""}</span>
                     </button>
                     <div
                         className="offcanvas offcanvas-end"
@@ -79,13 +79,13 @@ export default function Navbar() {
                                 {localStorage.getItem("authToken") ? (
                                     <li className="nav-item d-flex">
                                         <div className="nav-link dropdown-toggle" style={{ paddingRight: '20px', color: 'white' }} role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i className="fa-regular fa-user" style={{ color: 'white', fontSize: '24px' }}></i>{data.length > 0 ? <Badge pill bg="danger" style={badgeStyle2}>{data.length}</Badge> : ""}
+                                            <i className="fa-regular fa-user" style={{ color: 'white', fontSize: '24px' }}></i>{data.length > 0 ? <span pill bg="danger" style={badgeStyle2}>{data.length}</span> : ""}
                                         </div>
                                         <ul className="dropdown-menu dropdown-menu-end" data-bs-theme="dark">
                                             <li><span className="dropdown-item">{localStorage.getItem("username")}</span></li>
                                             <li><span className="dropdown-item">
                                                 <div className="btn text-primary fw-bold" onClick={() => setCartView(true)}>My Cart
-                                                    {data.length > 0 ? <Badge pill bg="danger" style={badgeStyle}>{data.length}</Badge> : ""}
+                                                    {data.length > 0 ? <span pill bg="danger" style={badgeStyle}>{data.length}</span> : ""}
                                                 </div>
                                                 {cartview ? <Modal onClose={() => setCartView(false)}><Cart /></Modal> : null}
                                             </span>
