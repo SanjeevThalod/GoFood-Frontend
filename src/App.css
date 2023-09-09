@@ -14,5 +14,18 @@
         align-items: center;
         margin-left: auto;
     }
-    
+}
+.hula{
+    font-size: 40px;
+}
+
+.custom-offcanvas{
+    width: 300px !important;
+}
+
+@media screen and (max-width:650px){
+    .hula{
+        font-size: 25px;
+        transform: translateY(-45px);
+    }
 }

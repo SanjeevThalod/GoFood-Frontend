@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Modal from '../Modal';
 import Cart from '../pages/Cart';
 import { useCart } from './ContextReducer';
+import '../App.css'
 
 export default function Navbar() {
     let data = useCart();
@@ -26,14 +27,14 @@ export default function Navbar() {
     const badgeStyle2 = {
         backgroundColor: 'white',
         borderRadius: '50%', // This makes it circular
-        padding: '0px 6px', // Adjust the padding to control the size of the circle
+        padding: '0px 8px', // Adjust the padding to control the size of the circle
         lineHeight: '1', // Set the line height to 1 to make it more round
         color: 'red',
         position:'relative',
-        bottom: '15px',
-        right: '7px',
+        bottom: '11px',
+        right: '-8px',
         marginLeft: '6px',
-        marginBottom: '2px' // Set the text color to white
+        marginBottom: '1px' // Set the text color to white
     };
     return (
         <div>
@@ -50,7 +51,7 @@ export default function Navbar() {
                         <span className="navbar-toggler-icon">{data.length > 0 ? <span pill bg="danger" style={badgeStyle2}>{data.length}</span> : ""}</span>
                     </button>
                     <div
-                        className="offcanvas offcanvas-end"
+                        className="offcanvas offcanvas-end custom-offcanvas"
                         tabIndex="-1"
                         id="navbarSupportedContent"
                         aria-labelledby="navbarSupportedContentLabel"
@@ -71,6 +72,11 @@ export default function Navbar() {
                                 <li className="nav-item">
                                     <Link className="nav-link active fs-5 fw-bold" aria-current="page" to="/">
                                         Home
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link active fs-5 fw-bold" aria-current="page" to="/myorder">
+                                        My Orders
                                     </Link>
                                 </li>
                                 {localStorage.getItem("authToken") && (
@@ -100,12 +106,12 @@ export default function Navbar() {
                                 ) : (
                                     <>
                                         <li className="nav-item">
-                                            <Link className="btn bg-white text-primary mx-1" aria-current="page" to="/login">
+                                            <Link className="btn bg-white text-primary mx-1 my-1" aria-current="page" to="/login">
                                                 Login
                                             </Link>
                                         </li>
                                         <li className="nav-item">
-                                            <Link className="btn bg-white text-primary mx-1" to="/signup">
+                                            <Link className="btn bg-white text-primary mx-1 my-1" to="/signup">
                                                 SignUp
                                             </Link>
                                         </li>
